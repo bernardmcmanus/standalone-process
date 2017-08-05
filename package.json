@@ -1,0 +1,59 @@
+{
+  "name": "standalone-process",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "A standalone build of defunctzombie/node-process with recommended shims",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
+  "author": {
+    "name": "Bernard McManus",
+    "email": "bernard.mcmanus.iv@gmail.com",
+    "url": "https://github.com/bernardmcmanus"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bernardmcmanus/standalone-process.git"
+  },
+  "keywords": [
+    "process",
+    "browser",
+    "standalone"
+  ],
+  "scripts": {
+    "build": "npm run build:babel && npm run build:webpack",
+    "build:babel": "babel index.js --out-dir dist --source-maps inline",
+    "build:webpack": "webpack --progress --hide-modules",
+    "clean": "rimraf dist",
+    "lint": "eslint . --ignore-path .gitignore",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run lint",
+    "test": "exit 0"
+  },
+  "lint-staged": {
+    "*.js": "lint"
+  },
+  "pre-commit": "lint:staged",
+  "dependencies": {
+    "browser-process-hrtime": "^0.1.2",
+    "browser-stdout": "^1.3.0",
+    "process": "^0.11.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "imports-loader": "^0.7.1",
+    "lint-staged": "^4.0.2",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.4.1"
+  }
+}

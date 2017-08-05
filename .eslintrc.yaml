@@ -1,0 +1,12 @@
+root: true
+parser: babel-eslint
+extends:
+  - airbnb
+rules:
+  comma-dangle: [error, never]
+  indent: [error, tab]
+  no-tabs: [off]
+settings:
+  import/resolver:
+    webpack:
+      config: webpack.config.babel.js
